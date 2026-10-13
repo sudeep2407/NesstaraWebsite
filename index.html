@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Nesstara Darjeeling | Official Website</title>
+  <meta name="description" content="Hotel Nesstara Darjeeling — comfortable rooms, warm hospitality and a convenient location near Darjeeling Mall Road.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><img src="assets/logo.png" alt="Hotel Nesstara"></a>
+    <nav class="nav" id="nav">
+      <a class="active" href="#home">Home</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="book-top" href="#booking">Book Now</a>
+    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-slides" id="heroSlides">
+        <div class="hero-slide active"><img src="assets/hero-valley.jpg" alt="Deluxe room with a valley view"></div>
+        <div class="hero-slide"><img src="assets/hero-peaks.jpg" alt="Suite facing the peaks"></div>
+        <div class="hero-slide"><img src="assets/hero-pine.jpg" alt="Quiet room among the pines"></div>
+        <div class="hero-slide"><img src="assets/hero-tea.jpg" alt="Room with a tea tray by the window"></div>
+        <div class="hero-slide"><img src="assets/hero-bath.jpeg" alt="Pale stone bath"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Hotel Nesstara</p>
+        <h1>Stay in the Heart<br>of Darjeeling</h1>
+        <p>Experience the perfect blend of comfort,<br>warm hospitality and Himalayan charm.</p>
+        <a class="gold-btn" href="#booking">Book Your Stay <span>→</span></a>
+      </div>
+      <div class="hero-dots" id="heroDots" aria-hidden="true"></div>
+      <form class="search-box" id="booking">
+        <label>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </span>
+          <span><small>Check-in</small><input id="checkin" type="date" required></span>
+        </label>
+        <label>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          </span>
+          <span><small>Check-out</small><input id="checkout" type="date" required></span>
+        </label>
+        <label>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 19c1.4-3 3.8-4.5 7-4.5S17.6 16 19 19"/></svg>
+          </span>
+          <span>
+            <small>Guests</small>
+            <select id="guests">
+              <option>2 Adults, 1 Room</option>
+              <option>1 Adult, 1 Room</option>
+              <option>3 Adults, 1 Room</option>
+              <option>4 Adults, 1 Room</option>
+              <option>2 Adults, 2 Rooms</option>
+            </select>
+          </span>
+        </label>
+        <button class="availability" id="availability" type="submit">Search Availability</button>
+      </form>
+    </section>
+
+    <section class="rooms-section" id="rooms">
+      <div class="section-title">
+        <div>
+          <p class="mini">Our Rooms</p>
+          <h2>Thoughtfully Designed for Your Comfort <i></i></h2>
+        </div>
+      </div>
+      <div class="room-grid">
+        <article class="room-card">
+          <div class="room-carousel" data-carousel>
+            <img class="on" src="assets/deluxe-1.jpeg" alt="Deluxe room with pines outside">
+            <img src="assets/deluxe-2.jpeg" alt="Deluxe room tea tray">
+            <img src="assets/deluxe-3.jpeg" alt="Deluxe room bath">
+            <div class="room-nav">
+              <button type="button" data-dir="-1" aria-label="Previous photo">‹</button>
+              <button type="button" data-dir="1" aria-label="Next photo">›</button>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-top"><h3>Deluxe Room</h3><span class="price">From ₹3,500</span></div>
+            <p>A calm room for two, with pines at the glass and a quiet evening in.</p>
+            <ul class="amens"><li>180 sq ft</li><li>Pine view</li><li>Queen bed</li><li>32" TV</li></ul>
+            <div class="room-actions">
+              <button type="button" class="book" data-room="Deluxe Room">Book Now</button>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-carousel" data-carousel>
+            <img class="on" src="assets/super-1.jpeg" alt="Super Deluxe valley view">
+            <img src="assets/super-2.jpeg" alt="Super Deluxe window seat">
+            <img src="assets/super-3.jpeg" alt="Super Deluxe king bed">
+            <div class="room-nav">
+              <button type="button" data-dir="-1" aria-label="Previous photo">‹</button>
+              <button type="button" data-dir="1" aria-label="Next photo">›</button>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-top"><h3>Super Deluxe Room</h3><span class="price">From ₹4,500</span></div>
+            <p>A wider bed and a window seat, with the valley filling with cloud by afternoon.</p>
+            <ul class="amens"><li>220 sq ft</li><li>Valley view</li><li>King bed</li><li>40" TV</li></ul>
+            <div class="room-actions">
+              <button type="button" class="book" data-room="Super Deluxe Room">Book Now</button>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-carousel" data-carousel>
+            <img class="on" src="assets/suite-1.jpeg" alt="Suite facing the peaks">
+            <img src="assets/suite-2.jpeg" alt="Suite sitting corner">
+            <img src="assets/suite-3.jpeg" alt="Suite king bed">
+            <div class="room-nav">
+              <button type="button" data-dir="-1" aria-label="Previous photo">‹</button>
+              <button type="button" data-dir="1" aria-label="Next photo">›</button>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-top"><h3>Suite Room</h3><span class="price">From ₹6,500</span></div>
+            <p>The long window room. Kanchenjunga on clear mornings, a chair for when it is not.</p>
+            <ul class="amens"><li>350 sq ft</li><li>Peak view</li><li>King bed</li><li>43" TV</li></ul>
+            <div class="room-actions">
+              <button type="button" class="book" data-room="Suite Room">Book Now</button>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-carousel" data-carousel>
+            <img class="on" src="assets/family-1.jpeg" alt="Family room with sofa bed">
+            <img src="assets/family-2.jpeg" alt="Family room sitting area">
+            <img src="assets/family-3.jpeg" alt="Family room beds">
+            <div class="room-nav">
+              <button type="button" data-dir="-1" aria-label="Previous photo">‹</button>
+              <button type="button" data-dir="1" aria-label="Next photo">›</button>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-top"><h3>Family Room</h3><span class="price">From ₹8,000</span></div>
+            <p>Room enough for four, with a sofa bed and space to unpack properly.</p>
+            <ul class="amens"><li>420 sq ft</li><li>Valley view</li><li>King + sofa bed</li><li>43" TV</li></ul>
+            <div class="room-actions">
+              <button type="button" class="book" data-room="Family Room">Book Now</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="experience">
+      <div class="experience-photo"><img src="assets/experience.jpg" alt="Darjeeling toy train and mountain view"></div>
+      <div class="experience-copy">
+        <p class="mini">Experience Darjeeling</p>
+        <h2>More Than Just a Stay</h2>
+        <p>At Hotel Nesstara, every moment is designed to help you slow down, breathe and experience the true beauty of Darjeeling. From breathtaking views to local flavors, your Himalayan getaway starts here.</p>
+        <a class="gold-btn" href="#gallery">Discover More <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="amenities-head">
+        <p class="mini">Our Amenities</p>
+        <h2>Everything You Need for a Comfortable Stay</h2>
+      </div>
+      <div class="amenity-grid">
+        <div>
+          <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9.5c3.6-3.4 10.4-3.4 14 0M7.5 12.2c2.4-2.2 6.6-2.2 9 0M10 14.8c1.1-.9 2.9-.9 4 0"/><circle cx="12" cy="17.2" r="1"/></svg></b>
+          <strong>Free Wi-Fi</strong>
+          <span>Stay connected<br>always</span>
+        </div>
+        <div>
+          <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11h16v8H4zM7 11V8a5 5 0 0 1 10 0v3M9 15h.01M12 15h.01M15 15h.01"/></svg></b>
+          <strong>Restaurant</strong>
+          <span>Delicious local &<br>international cuisine</span>
+        </div>
+        <div>
+          <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 13h12l-1 7H7l-1-7zM8 13c0-4 8-4 8 0M12 6V3"/></svg></b>
+          <strong>Room Service</strong>
+          <span>Comfort at<br>your fingertips</span>
+        </div>
+        <div>
+          <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h7l4 4v12H7zM14 4v4h4M9 13h6M9 16h4"/></svg></b>
+          <strong>Laundry</strong>
+          <span>Freshness,<br>anytime</span>
+        </div>
+        <div>
+          <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3 5 14h7l-1 7 8-11h-7l1-7z"/></svg></b>
+          <strong>Power Backup</strong>
+          <span>Uninterrupted<br>comfort</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-strip">
+      <div class="loc-item">
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg></b>
+        <div>
+          <small>Prime Location</small>
+          <strong>Just 4 Minutes from Darjeeling Mall Road</strong>
+          <span>Explore the local markets, cafes and attractions with ease.</span>
+        </div>
+      </div>
+      <div class="loc-item">
+        <b aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></b>
+        <div>
+          <strong>Hotel Nesstara</strong>
+          <span>Near SP Banglow, Chauk Bazaar<br>Darjeeling, West Bengal 734101</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-copy">
+        <p class="mini">Contact Us</p>
+        <h2>Get in touch.</h2>
+        <p class="address">Near SP Banglow, Chauk Bazaar<br>Darjeeling, West Bengal 734101</p>
+        <ul class="contact-list">
+          <li><a href="tel:+917363033133"><svg viewBox="0 0 24 24"><path d="M7 3h4l1 4-2 1a12 12 0 0 0 6 6l1-2 4 1v4a2 2 0 0 1-2 2A16 16 0 0 1 5 5a2 2 0 0 1 2-2z"/></svg>73630 33133</a></li>
+          <li><a href="tel:+919735535551"><svg viewBox="0 0 24 24"><path d="M7 3h4l1 4-2 1a12 12 0 0 0 6 6l1-2 4 1v4a2 2 0 0 1-2 2A16 16 0 0 1 5 5a2 2 0 0 1 2-2z"/></svg>97355 35551</a></li>
+          <li><a href="tel:+919735565533"><svg viewBox="0 0 24 24"><path d="M7 3h4l1 4-2 1a12 12 0 0 0 6 6l1-2 4 1v4a2 2 0 0 1-2 2A16 16 0 0 1 5 5a2 2 0 0 1 2-2z"/></svg>97355 65533</a></li>
+          <li><a href="mailto:admin@hotelnesstara.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>admin@hotelnesstara.com</a></li>
+        </ul>
+        <div class="socials">
+          <a href="https://www.instagram.com/hotel_nesstara/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.facebook.com/share/1BjCYYVCY8/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe title="Hotel Nesstara on Google Maps" src="https://maps.google.com/maps?q=Hotel%20Nesstara%2C%20Near%20SP%20Banglow%2C%20Chauk%20Bazaar%2C%20Darjeeling&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="gallery-heading">
+        <p class="mini">A Glimpse of Darjeeling</p>
+        <h2>Beautiful Moments Around You</h2>
+      </div>
+      <div class="gallery-carousel">
+        <div class="gallery-track">
+          <figure><img src="assets/hero-valley.jpg" alt="Valley view room"><figcaption>Valley view room</figcaption></figure>
+          <figure><img src="assets/hero-peaks.jpg" alt="Peak-facing suite"><figcaption>Peak-facing suite</figcaption></figure>
+          <figure><img src="assets/hero-pine.jpg" alt="Pine room"><figcaption>Pine room</figcaption></figure>
+          <figure><img src="assets/gallery-dining.jpg" alt="Breakfast by the window"><figcaption>Breakfast by the window</figcaption></figure>
+          <figure><img src="assets/gallery-terrace.jpg" alt="Mist on the terrace"><figcaption>Mist on the terrace</figcaption></figure>
+          <figure><img src="assets/gallery-house.jpg" alt="The house in the pines"><figcaption>The house in the pines</figcaption></figure>
+          <figure><img src="assets/tea.jpg" alt="Darjeeling tea gardens"><figcaption>Darjeeling tea gardens</figcaption></figure>
+          <figure><img src="assets/mall.jpg" alt="Mall Road"><figcaption>Mall Road</figcaption></figure>
+          <figure><img src="assets/hero.jpg" alt="Kanchenjunga"><figcaption>Kanchenjunga</figcaption></figure>
+          <figure><img src="assets/hero-valley.jpg" alt="Valley view room"><figcaption>Valley view room</figcaption></figure>
+          <figure><img src="assets/hero-peaks.jpg" alt="Peak-facing suite"><figcaption>Peak-facing suite</figcaption></figure>
+          <figure><img src="assets/hero-pine.jpg" alt="Pine room"><figcaption>Pine room</figcaption></figure>
+          <figure><img src="assets/gallery-dining.jpg" alt="Breakfast by the window"><figcaption>Breakfast by the window</figcaption></figure>
+          <figure><img src="assets/gallery-terrace.jpg" alt="Mist on the terrace"><figcaption>Mist on the terrace</figcaption></figure>
+          <figure><img src="assets/gallery-house.jpg" alt="The house in the pines"><figcaption>The house in the pines</figcaption></figure>
+          <figure><img src="assets/tea.jpg" alt="Darjeeling tea gardens"><figcaption>Darjeeling tea gardens</figcaption></figure>
+          <figure><img src="assets/mall.jpg" alt="Mall Road"><figcaption>Mall Road</figcaption></figure>
+          <figure><img src="assets/hero.jpg" alt="Kanchenjunga"><figcaption>Kanchenjunga</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-cta">
+      <p class="mini">Plan Your Darjeeling Escape</p>
+      <h2>Your mountain stay starts here.</h2>
+      <p>Book directly with Hotel Nesstara for availability and room details.</p>
+      <a class="gold-btn" id="ctaBook" href="#">WhatsApp Booking <span>→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="Hotel Nesstara">
+      <span>A part of Yugandhara</span>
+    </div>
+    <nav class="footer-nav">
+      <a href="#home">Home</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="copyright">© <span id="year"></span> Hotel Nesstara. All Rights Reserved.</div>
+  </footer>
+
+  <div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bookTitle">
+    <div class="sheet book-sheet">
+      <div class="sheet-head">
+        <h3 id="bookTitle">Check availability</h3>
+        <button class="close" id="closeBook" type="button" aria-label="Close">×</button>
+      </div>
+      <p class="hint" id="bookRoomLabel"></p>
+      <form id="bookForm">
+        <div class="row">
+          <label>Check-in<input id="bookIn" type="date" required aria-required="true"></label>
+          <label>Check-out<input id="bookOut" type="date" required aria-required="true"></label>
+        </div>
+        <div class="row">
+          <label>Persons<input id="bookPersons" type="number" min="1" max="8" value="2" required aria-required="true"></label>
+          <label>Rooms<input id="bookRooms" type="number" min="1" max="6" value="1" required aria-required="true"></label>
+        </div>
+        <button class="book" type="submit">Check Availability</button>
+      </form>
+    </div>
+  </div>
+
+  <a class="wa" id="waFloat" href="#" aria-label="Chat on WhatsApp">WhatsApp</a>
+  <script src="script.js"></script>
+</body>
+</html>
