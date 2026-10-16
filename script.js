@@ -34,13 +34,17 @@ if (ci && co) {
 }
 
 function bookingMessage(room) {
-  var guests = document.getElementById("guests").value || "2 Adults, 1 Room";
+  var adults = document.getElementById("adults").value || "2";
+  var children = document.getElementById("children").value || "0";
+  var rooms = document.getElementById("roomsCount").value || "1";
   return [
     "Hello Hotel Nesstara, I would like to check availability.",
     room ? "Room: " + room : "",
     "Check-in: " + (ci ? ci.value : ""),
     "Check-out: " + (co ? co.value : ""),
-    "Guests: " + guests
+    "Adults: " + adults,
+    "Child below 8: " + children,
+    "Rooms: " + rooms
   ].filter(Boolean).join("\n");
 }
 function openWhatsApp(text) {
@@ -49,8 +53,18 @@ function openWhatsApp(text) {
 
 document.getElementById("booking").addEventListener("submit", function (e) {
   e.preventDefault();
+  var adults = Number(document.getElementById("adults").value);
+  var rooms = Number(document.getElementById("roomsCount").value);
+  if (!ci.value || !co.value) {
+    alert("Please fill in check-in and check-out.");
+    return;
+  }
   if (co.value <= ci.value) {
     alert("Check-out should be after check-in.");
+    return;
+  }
+  if (!adults || adults < 1 || !rooms || rooms < 1) {
+    alert("Adults and rooms must be at least 1.");
     return;
   }
   openWhatsApp(bookingMessage());
@@ -72,15 +86,7 @@ document.getElementById("waFloat").addEventListener("click", function (e) {
 document.getElementById("year").textContent = new Date().getFullYear();
 
 var heroSlides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
-var heroDots = document.getElementById("heroDots");
 var heroIndex = 0;
-heroSlides.forEach(function (_, i) {
-  var dot = document.createElement("button");
-  dot.type = "button";
-  if (i === 0) dot.className = "on";
-  dot.addEventListener("click", function () { showHero(i); });
-  heroDots.appendChild(dot);
-});
 function showHero(n) {
   heroIndex = (n + heroSlides.length) % heroSlides.length;
   heroSlides.forEach(function (slide, i) {
@@ -92,10 +98,9 @@ function showHero(n) {
       img.style.animation = "";
     }
   });
-  Array.prototype.forEach.call(heroDots.children, function (dot, i) {
-    dot.classList.toggle("on", i === heroIndex);
-  });
 }
+document.getElementById("heroPrev").addEventListener("click", function () { showHero(heroIndex - 1); });
+document.getElementById("heroNext").addEventListener("click", function () { showHero(heroIndex + 1); });
 setInterval(function () { showHero(heroIndex + 1); }, 6500);
 var heroTouch = 0;
 document.getElementById("heroSlides").addEventListener("touchstart", function (e) {
@@ -187,4 +192,177 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
   ].join("\n");
   openWhatsApp(text);
   bookModal.classList.remove("open");
+});
+
+var PACKAGES = {
+  "2n": {
+    title: "Darjeeling 2 Nights 3 Days",
+    duration: "2 Nights / 3 Days",
+    days: [
+      ["Day 1: NJP / Siliguri / Bagdogra to Darjeeling", "Pick up from NJP, Siliguri or Bagdogra and drop to Darjeeling. On reaching, check in to the hotel and rest for the day. Enjoy the evening exploring Darjeeling Mall and the local markets. Lunch and dinner at the Darjeeling hotel. Overnight stay at Darjeeling."],
+      ["Day 2: Darjeeling Local Sightseeing", "After breakfast, proceed for Darjeeling local sightseeing. Return to the hotel for lunch and rest for the day. Enjoy the evening exploring Darjeeling Mall and the local markets. Dinner at the Darjeeling hotel. Overnight stay at Darjeeling."],
+      ["Day 3: Darjeeling to NJP / Siliguri / Bagdogra via Mirik", "After breakfast, check out from Darjeeling and drop to NJP, Siliguri or Bagdogra via Mirik sightseeing, if time permits."]
+    ],
+    sights: [
+      ["Darjeeling sightseeing", ["Tiger Hill (after breakfast)", "Batasia Loop", "Ghoom Monastery", "Japanese Temple", "Peace Pagoda", "Zoo", "HMI", "Ropeway", "Tenzing Rock", "Lebong Tea Garden"]],
+      ["Mirik sightseeing", ["Nepal border", "Pashupati Market", "Mirik Lake", "Mirik Tea Garden", "Gopal Dhara Tea Estate"]]
+    ]
+  },
+  "3n": {
+    title: "Darjeeling Offbeat 3 Nights 4 Days",
+    duration: "3 Nights / 4 Days",
+    days: [
+      ["Day 1: NJP / Siliguri / Bagdogra to Sittong", "Pick up from NJP, Siliguri or Bagdogra and drop to Sittong. Visit Sittong sightseeing on the way. On reaching, check in to the Sittong hotel or homestay and rest for the day. Lunch, evening snacks and dinner at the Sittong homestay. Overnight stay at Sittong."],
+      ["Day 2: Sittong to Darjeeling via sightseeing", "After breakfast, check out from Sittong and proceed for Lamahatta, Takdah and Tinchuley sightseeing. Reach Darjeeling by noon and check in to the hotel. Lunch, evening snacks and dinner at the Darjeeling hotel. Overnight stay at Darjeeling."],
+      ["Day 3: Darjeeling Local Sightseeing", "After breakfast, proceed for Darjeeling local sightseeing. Lunch and dinner at the Darjeeling hotel. Overnight stay at Darjeeling."],
+      ["Day 4: Darjeeling to NJP / Siliguri / Bagdogra via Mirik", "After breakfast, check out from Darjeeling and drop to NJP, Siliguri or Bagdogra via Mirik sightseeing, if time permits."]
+    ],
+    sights: [
+      ["Darjeeling sightseeing", ["Tiger Hill (after breakfast)", "Batasia Loop", "Ghoom Monastery", "Japanese Temple", "Peace Pagoda", "Zoo", "HMI", "Ropeway", "Tenzing Rock", "Lebong Tea Garden"]],
+      ["Lamahatta, Takdah and Tinchuley", ["Lamahatta Park", "Gumbadara View Point", "Lovers' Meet Point", "Peshok Tea Garden"]],
+      ["Sittong sightseeing", ["Ahaldara View Point", "Jogighat Bridge", "Sittong Monastery", "Sittong Orange Orchard", "Latpanchar"]],
+      ["Mirik sightseeing", ["Nepal border", "Pashupati Market", "Mirik Lake", "Mirik Tea Garden", "Gopal Dhara Tea Estate"]]
+    ]
+  },
+  "4n": {
+    title: "Darjeeling Offbeat 4 Nights 5 Days",
+    duration: "4 Nights / 5 Days",
+    days: [
+      ["Day 1: NJP / Siliguri to Sittong", "Pick up from NJP Railway Station or Siliguri and transfer to Sittong. Enjoy Sittong sightseeing. Lunch and dinner at the Sittong homestay. Overnight stay at Sittong."],
+      ["Day 2: Sittong to Takdah", "After breakfast, check out from the homestay and transfer to Takdah. En route, visit Lamahatta, Takdah and Tinchuley sightseeing. Lunch and dinner at the Takdah homestay. Overnight stay at Takdah."],
+      ["Day 3: Takdah to Darjeeling", "After breakfast, check out from the homestay and transfer to Darjeeling. Visit Batasia Loop, Ghoom Monastery and Dali Monastery. Lunch and dinner at the Darjeeling hotel. Overnight stay at Darjeeling."],
+      ["Day 4: Darjeeling Sightseeing", "After breakfast, enjoy Darjeeling local sightseeing: Tiger Hill, Peace Pagoda, Japanese Temple, Padmaja Naidu Himalayan Zoological Park, HMI, Tenzing Rock, Darjeeling Ropeway and Lebong Tea Garden. Lunch and dinner at the Darjeeling hotel. Overnight stay at Darjeeling."],
+      ["Day 5: Darjeeling – Mirik – NJP / Siliguri drop", "After breakfast, check out from the hotel and proceed towards NJP or Siliguri via Mirik. En route, visit Mirik Lake, Mirik Tea Garden, Gopal Dhara Tea Estate, Simana View Point, the India–Nepal border and Pashupati Market, subject to border regulations and valid ID proof. Drop at NJP Railway Station or Siliguri."]
+    ],
+    sights: [
+      ["Sittong sightseeing", ["Ahaldara View Point", "Jogighat Bridge", "Sittong Monastery", "Namthing Pokhri View Point", "Latpanchar Monastery"]],
+      ["Lamahatta, Takdah and Tinchuley", ["Gumbadara View Point", "Lovers' Meet Point", "Peshok Tea Garden", "Lamahatta Eco Park"]],
+      ["Darjeeling sightseeing", ["Tiger Hill", "Peace Pagoda", "Japanese Temple", "Zoo", "HMI", "Tenzing Rock", "Darjeeling Ropeway", "Lebong Tea Garden", "Batasia Loop", "Ghoom Monastery", "Dali Monastery"]],
+      ["Mirik sightseeing", ["Mirik Lake", "Mirik Tea Garden", "Gopal Dhara Tea Estate", "Simana View Point", "India–Nepal Border", "Pashupati Market"]]
+    ]
+  },
+  "5n": {
+    title: "Darjeeling Offbeat 5 Nights 6 Days",
+    duration: "5 Nights / 6 Days",
+    days: [
+      ["Day 1: NJP to Tinchuley via Kurseong", "Pick up from NJP Railway Station or Bagdogra Airport. Drive via the scenic hill town of Kurseong, with panoramic views of tea gardens and the Himalayan landscape. Reach Tinchuley and check in to the homestay. Spend the evening in the quiet surroundings. Overnight stay at Tinchuley."],
+      ["Day 2: Tinchuley – Lamahatta – Takdah – Sonada", "After breakfast, explore Lamahatta Eco Park, Peshok Tea Garden and Lovers' Meet Point. Later, drive to Sonada and check in to the hotel or homestay. Overnight stay at Sonada."],
+      ["Day 3: Sonada to Darjeeling", "After breakfast, visit Indreni Waterfall, Batasia Loop and Ghoom Monastery. Proceed to Darjeeling and check in to the hotel. Explore Chowrasta Mall Road in the evening, if time permits. Overnight stay at Darjeeling."],
+      ["Day 4: Darjeeling Local Sightseeing", "Optional early morning visit to Tiger Hill for sunrise. After breakfast, visit HMI, Padmaja Naidu Himalayan Zoological Park, a tea garden, Japanese Temple and Peace Pagoda, and the ropeway if it is operating. Walk the local market and Mall Road. Overnight stay at Darjeeling."],
+      ["Day 5: Darjeeling to Bijanbari via Jamuni", "After breakfast, drive to Bijanbari via the scenic Jamuni route, through valleys, tea gardens, rivers and mountain villages. Check in to the homestay and relax. Overnight stay at Bijanbari."],
+      ["Day 6: Bijanbari – Mirik – NJP / Bagdogra drop", "After breakfast, check out from the homestay. Visit Mirik Lake and the surrounding viewpoints, with some leisure time before continuing. Drop at NJP Railway Station or Bagdogra Airport."]
+    ],
+    sights: [
+      ["Tinchuley, Lamahatta and Takdah", ["Lamahatta Eco Park", "Peshok Tea Garden", "Lovers' Meet Point"]],
+      ["Sonada to Darjeeling", ["Indreni Waterfall", "Batasia Loop", "Ghoom Monastery", "Chowrasta Mall Road"]],
+      ["Darjeeling sightseeing", ["Tiger Hill sunrise (optional)", "HMI", "Padmaja Naidu Himalayan Zoological Park", "Tea Garden", "Japanese Temple", "Peace Pagoda", "Ropeway (optional)", "Local Market and Mall Road"]],
+      ["Mirik sightseeing", ["Mirik Lake", "Surrounding viewpoints"]]
+    ]
+  }
+};
+var packageIncludes = ["Food (breakfast, lunch and dinner)", "Accommodation", "Private cab for sightseeing and transfer"];
+var packageExcludes = ["Extra food", "Room heater", "Parking charges, entry fees, riding, activity charges and cab waiting charges"];
+var childPolicy = "Below 5 years: no charges. Above 5 years: chargeable, with some discount applicable. Above 8 years: fully chargeable.";
+
+function renderPackage(id) {
+  var pkg = PACKAGES[id];
+  if (!pkg) return;
+  var days = pkg.days.map(function (d) {
+    return "<div class=\"day\"><strong>" + d[0] + "</strong><p>" + d[1] + "</p></div>";
+  }).join("");
+  var sights = pkg.sights.map(function (s) {
+    return "<div><strong>" + s[0] + "</strong><ul>" + s[1].map(function (item) { return "<li>" + item + "</li>"; }).join("") + "</ul></div>";
+  }).join("");
+  document.getElementById("packageBody").innerHTML =
+    "<div class=\"package-body\">" +
+      "<p class=\"duration\">" + pkg.duration + "</p>" +
+      "<h3 id=\"packageTitle\">" + pkg.title + "</h3>" +
+      days +
+      "<div class=\"sight-grid\">" + sights + "</div>" +
+      "<div class=\"package-notes\">" +
+        "<div><strong>Package includes</strong><ul>" + packageIncludes.map(function (i) { return "<li>" + i + "</li>"; }).join("") + "</ul></div>" +
+        "<div><strong>Package excludes</strong><ul>" + packageExcludes.map(function (i) { return "<li>" + i + "</li>"; }).join("") + "</ul></div>" +
+      "</div>" +
+      "<div class=\"child-policy\"><strong>Policy for children</strong><p>" + childPolicy + "</p></div>" +
+      "<button class=\"book\" type=\"button\" id=\"bookPackage\">Book This Package</button>" +
+    "</div>";
+  document.getElementById("bookPackage").addEventListener("click", function () {
+    openTourForm("package", pkg.title);
+  });
+}
+
+var packageModal = document.getElementById("packageModal");
+var tourFormModal = document.getElementById("tourFormModal");
+var currentPackage = "";
+var tourMode = "package";
+
+function openTourForm(mode, name) {
+  tourMode = mode;
+  currentPackage = name || "";
+  document.getElementById("tourFormTitle").textContent = mode === "custom" ? "Customized itinerary" : "Book this package";
+  document.getElementById("tourFormLabel").textContent = mode === "custom" ? "Tell us the dates and places you have in mind." : currentPackage;
+  document.getElementById("tourDestinationsWrap").classList.toggle("show", mode === "custom");
+  document.getElementById("tourDestinations").required = mode === "custom";
+  document.getElementById("tourAdults").value = 2;
+  document.getElementById("tourChildren").value = 0;
+  document.getElementById("tourRooms").value = 1;
+  var start = document.getElementById("tourStart");
+  var end = document.getElementById("tourEnd");
+  start.value = plus(1);
+  end.value = plus(3);
+  start.min = plus(0);
+  end.min = plus(1);
+  packageModal.classList.remove("open");
+  tourFormModal.classList.add("open");
+}
+
+document.querySelectorAll(".view-package").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    renderPackage(btn.getAttribute("data-package"));
+    packageModal.classList.add("open");
+  });
+});
+document.getElementById("customItinerary").addEventListener("click", function () { openTourForm("custom"); });
+document.getElementById("closePackage").addEventListener("click", function () { packageModal.classList.remove("open"); });
+document.getElementById("closeTourForm").addEventListener("click", function () { tourFormModal.classList.remove("open"); });
+packageModal.addEventListener("click", function (e) { if (e.target === packageModal) packageModal.classList.remove("open"); });
+tourFormModal.addEventListener("click", function (e) { if (e.target === tourFormModal) tourFormModal.classList.remove("open"); });
+document.getElementById("tourForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var start = document.getElementById("tourStart").value;
+  var end = document.getElementById("tourEnd").value;
+  var adults = document.getElementById("tourAdults").value;
+  var children = document.getElementById("tourChildren").value;
+  var rooms = document.getElementById("tourRooms").value;
+  if (!start || !end || !adults || !rooms) {
+    alert("Please fill in the dates, adults and rooms.");
+    return;
+  }
+  if (end <= start) {
+    alert("End date should be after the start date.");
+    return;
+  }
+  if (Number(adults) < 1 || Number(rooms) < 1) {
+    alert("Adults and rooms must be at least 1.");
+    return;
+  }
+  var lines = [
+    tourMode === "custom" ? "Hello Hotel Nesstara, I would like a customized itinerary." : "Hello Hotel Nesstara, I would like to book a tour package.",
+    tourMode === "custom" ? "" : "Package: " + currentPackage,
+    "Start date: " + start,
+    "End date: " + end,
+    "Adults: " + adults,
+    "Child below 8: " + children,
+    "Rooms: " + rooms
+  ];
+  if (tourMode === "custom") {
+    var places = document.getElementById("tourDestinations").value.trim();
+    if (!places) {
+      alert("Please add the destinations you prefer.");
+      return;
+    }
+    lines.push("Preferred destinations: " + places);
+  }
+  openWhatsApp(lines.filter(Boolean).join("\n"));
+  tourFormModal.classList.remove("open");
 });
