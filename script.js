@@ -288,43 +288,43 @@ var PACKAGES = {
     duration: "5 Nights / 6 Days",
     days: [
       {
-        title: "Day 1 | NJP / Siliguri → Sittong",
-        text: "Pick up from NJP or Siliguri and drop to Sittong. Visit Sittong sightseeing on the way. On reaching, check in to the Sittong hotel or homestay and rest for the day. Lunch, evening snacks and dinner at the Sittong homestay.",
+        title: "Day 1 | NJP / Siliguri → Ramdhura",
+        text: "Pick up from NJP or Siliguri and proceed to Ramdhura via Kalimpong local sightseeing. On reaching, check in to the Ramdhura hotel or homestay and rest for the day. Lunch, evening snacks and dinner at the Ramdhura homestay.",
+        label: "Ramdhura sightseeing",
+        stops: ["Hanuman Tok", "Buddha Statue", "Delo Park", "Science City Museum"],
+        stay: "Night stay at Ramdhura"
+      },
+      {
+        title: "Day 2 | Ramdhura → Sittong",
+        text: "After breakfast, check out from Ramdhura and proceed for Sittong sightseeing. Reach Sittong by noon and check in to the homestay. Lunch, evening snacks and dinner at the Sittong hotel.",
         label: "Sittong sightseeing",
-        stops: ["Ahaldhara View Point", "Namthing Pokhri", "Lathpanchar Monastery"],
+        stops: ["Ahaldhara View Point", "Namthing Pokhri", "Orange Garden"],
         stay: "Night stay at Sittong"
       },
       {
-        title: "Day 2 | Sittong → Dawaipani",
-        text: "After breakfast, check out from Sittong and proceed for Kurseong sightseeing. Reach Dawaipani by noon and check in to the hotel. Lunch, evening snacks and dinner at the Dawaipani hotel.",
-        label: "Kurseong sightseeing",
-        stops: ["Kurseong Road", "Maldhiram Tea Garden", "Hanuman Tok", "Dowhill Sightseeing"],
-        stay: "Night stay at Dawaipani"
+        title: "Day 3 | Sittong → Tinchuley",
+        text: "After breakfast, check out from Sittong and proceed to Tinchuley via sightseeing. Reach Tinchuley by noon and check in to the homestay. Lunch and dinner at the Tinchuley homestay.",
+        label: "Sightseeing",
+        stops: ["Jogighat Bridge", "Mongpo Rabindra Bhawan", "Lover's Meet View Point", "Gumbadara View Point"],
+        stay: "Night stay at Tinchuley"
       },
       {
-        title: "Day 3 | Dawaipani → Darjeeling",
-        text: "After breakfast, check out from Dawaipani and proceed for Darjeeling offbeat sightseeing. Reach Darjeeling by noon and check in to the hotel. Lunch, evening snacks and dinner at the Darjeeling hotel.",
-        label: "Darjeeling offbeat sightseeing",
-        stops: ["Lamahatta Eco Park", "Gumbadara View Point", "Peshok Tea Garden", "Lover's Meet View Point"],
+        title: "Day 4 | Tinchuley → Darjeeling",
+        text: "After breakfast, check out from Tinchuley and proceed to Darjeeling via sightseeing. Reach Darjeeling by noon and check in to the hotel. Lunch and dinner at the Darjeeling hotel.",
+        label: "Sightseeing",
+        stops: ["Lamahatta Eco Park", "Dali Monastery"],
         stay: "Night stay at Darjeeling"
       },
       {
-        title: "Day 4 | Darjeeling Local Sightseeing",
-        text: "After breakfast, proceed for Darjeeling local sightseeing. Lunch and dinner at the Darjeeling hotel.",
+        title: "Day 5 | Darjeeling Local Sightseeing",
+        text: "After breakfast, proceed for Darjeeling local sightseeing. Return to the hotel by noon. Lunch and dinner at the Darjeeling hotel.",
         label: "Darjeeling local sightseeing",
-        stops: ["Batasia Loop", "Ghum Monastery", "Japanese Temple", "Peace Pagoda", "Zoo & HMI", "Tenzing Rock", "Ropeway (optional)", "Tea Garden"],
+        stops: ["Batasia Loop", "Ghum Monastery", "Peace Pagoda", "Japanese Temple", "Zoo", "HMI", "Tenzing Rock", "Ropeway", "Tea Garden"],
         stay: "Night stay at Darjeeling"
       },
       {
-        title: "Day 5 | Darjeeling → Lepchajagat",
-        text: "After breakfast, check out from the Darjeeling hotel and proceed for Darjeeling local sightseeing. Reach Lepchajagat by noon and check in to the Lepchajagat hotel. Lunch and dinner at the Lepchajagat hotel.",
-        label: "Darjeeling local sightseeing",
-        stops: ["Dali Monastery", "Rock Garden", "Ganga Maiya Park"],
-        stay: "Night stay at Lepchajagat"
-      },
-      {
-        title: "Day 6 | Lepchajagat → NJP / Siliguri",
-        text: "After breakfast, check out from Lepchajagat and drop to NJP or Siliguri via Mirik sightseeing.",
+        title: "Day 6 | Darjeeling → NJP / Siliguri",
+        text: "After breakfast, check out from Darjeeling and drop to NJP or Siliguri via Mirik sightseeing.",
         label: "Mirik sightseeing",
         stops: ["Mirik Lake", "Gopaldhara Tea Garden", "Pashupati Market", "Nepal Border", "Simana View Point"]
       }
