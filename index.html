@@ -169,6 +169,25 @@
         </article>
         <article class="room-card">
           <div class="room-carousel" data-carousel>
+            <img class="on" src="assets/four-bedded-1.jpeg" alt="Triple-bedded room">
+            <img src="assets/four-bedded-2.jpeg" alt="Triple-bedded room window">
+            <img src="assets/four-bedded-3.jpeg" alt="Triple-bedded room seating">
+            <img src="assets/four-bedded-4.jpeg" alt="Triple-bedded room">
+            <div class="room-nav">
+              <button type="button" data-dir="-1" aria-label="Previous photo">‹</button>
+              <button type="button" data-dir="1" aria-label="Next photo">›</button>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-top"><h3>Triple-Bedded Room</h3><span class="price">Rate on request</span></div>
+            <p>Three beds in one room, for a small group travelling together.</p>
+            <div class="room-actions">
+              <button type="button" class="book" data-room="Triple-Bedded Room">Book Now</button>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-carousel" data-carousel>
             <img class="on" src="assets/couple-1.jpeg" alt="Couple room">
             <img src="assets/couple-2.jpeg" alt="Couple room tea">
             <img src="assets/couple-3.jpeg" alt="Couple room bed">
@@ -304,7 +323,7 @@
           <div>
             <small>3 Nights / 4 Days</small>
             <h3>Darjeeling Offbeat 3 Nights 4 Days</h3>
-            <p>Sittong, then Darjeeling via Lamahatta, Takdah and Tinchuley, with Mirik on the way out.</p>
+            <p>Sittong, then Darjeeling via offbeat sightseeing, with Mirik on the way out.</p>
             <button type="button" class="view-package" data-package="3n">View Details <span>→</span></button>
           </div>
         </article>
@@ -313,7 +332,7 @@
           <div>
             <small>4 Nights / 5 Days</small>
             <h3>Darjeeling Offbeat 4 Nights 5 Days</h3>
-            <p>Sittong, Takdah and two nights in Darjeeling, ending with Mirik sightseeing.</p>
+            <p>Sittong, two nights in Darjeeling, then Lepchajagat, with Mirik on the way out.</p>
             <button type="button" class="view-package" data-package="4n">View Details <span>→</span></button>
           </div>
         </article>
@@ -322,7 +341,7 @@
           <div>
             <small>5 Nights / 6 Days</small>
             <h3>Darjeeling Offbeat 5 Nights 6 Days</h3>
-            <p>Tinchuley, Sonada, Darjeeling and Bijanbari, with Mirik on the return.</p>
+            <p>Sittong, Dawaipani, two nights in Darjeeling, then Lepchajagat, with Mirik on the return.</p>
             <button type="button" class="view-package" data-package="5n">View Details <span>→</span></button>
           </div>
         </article>
@@ -387,9 +406,10 @@
           <label>Check-out<input id="bookOut" type="date" required aria-required="true"></label>
         </div>
         <div class="row">
-          <label>Persons<input id="bookPersons" type="number" min="1" max="8" value="2" required aria-required="true"></label>
-          <label>Rooms<input id="bookRooms" type="number" min="1" max="6" value="1" required aria-required="true"></label>
+          <label>Adults<input id="bookAdults" type="number" min="1" max="12" value="2" required aria-required="true"></label>
+          <label>Child below 8<input id="bookChildren" type="number" min="0" max="8" value="0" required aria-required="true"></label>
         </div>
+        <label>Rooms<input id="bookRooms" type="number" min="1" max="6" value="1" required aria-required="true"></label>
         <button class="book" type="submit">Check Availability</button>
       </form>
     </div>
@@ -419,6 +439,14 @@
           <label>Child below 8<input id="tourChildren" type="number" min="0" max="10" value="0" required></label>
         </div>
         <label>Number of Rooms<input id="tourRooms" type="number" min="1" max="8" value="1" required></label>
+        <label id="tourCabWrap">Cab Type
+          <select id="tourCab" required>
+            <option value="">Select cab type</option>
+            <option>4 seater (Wagonr / Swift)</option>
+            <option>7 seater (Innova / Bolero Neo)</option>
+            <option>10 seater (Sumo / Bolero plus)</option>
+          </select>
+        </label>
         <label id="tourDestinationsWrap">Preferred Destinations<textarea id="tourDestinations" rows="3" placeholder="Darjeeling, Mirik, Sittong"></textarea></label>
         <button class="book" type="submit" id="tourSubmit">Send on WhatsApp</button>
       </form>
