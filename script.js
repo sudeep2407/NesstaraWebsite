@@ -6,12 +6,21 @@ menu.addEventListener("click", function () {
   var open = nav.classList.toggle("open");
   menu.classList.toggle("open", open);
   menu.setAttribute("aria-expanded", open ? "true" : "false");
+  document.body.style.overflow = open ? "hidden" : "";
 });
 nav.querySelectorAll("a").forEach(function (a) {
   a.addEventListener("click", function () {
     nav.classList.remove("open");
     menu.classList.remove("open");
+    document.body.style.overflow = "";
   });
+});
+document.addEventListener("click", function (e) {
+  if (!nav.classList.contains("open")) return;
+  if (nav.contains(e.target) || menu.contains(e.target)) return;
+  nav.classList.remove("open");
+  menu.classList.remove("open");
+  document.body.style.overflow = "";
 });
 
 var today = new Date();
