@@ -897,3 +897,60 @@ footer {
     left: 0;
     top: 250px;
   }
+  .hero-nav {
+    right: 16px;
+    bottom: auto;
+    top: 278px;
+    height: 46px;
+    align-items: center;
+  }
+  .hero h1 { font-size: 40px; }
+  .hero p { font-size: 15px; }
+  .hero p br { display: none; }
+  .search-box {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    margin: 14px 16px 0;
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 8px 10px 12px;
+  }
+  .search-box label { border-right: 0; border-bottom: 1px solid var(--line); padding: 10px 6px; }
+  .availability { margin: 10px 0 0; width: 100%; }
+  .rooms-section { padding: 48px 16px 24px; }
+  .section-title { display: block; }
+  .section-title h2, .amenities-head h2 { font-size: 26px; }
+  .section-title > a { display: inline-block; margin-top: 8px; }
+  .room-grid { grid-template-columns: 1fr; }
+  .experience { grid-template-columns: 1fr; }
+  .experience-photo img { min-height: 200px; }
+  .experience-copy { padding: 24px 18px 28px; }
+  .experience-copy h2 { font-size: 28px; }
+  .amenities { padding: 24px 8px; }
+  .amenity-grid { grid-template-columns: 1fr 1fr; }
+  .amenity-grid > div { border-bottom: 1px solid var(--line); }
+  .contact { grid-template-columns: 1fr; padding: 48px 16px; }
+  .contact-map, .contact-map iframe { min-height: 280px; }
+  .location-strip { grid-template-columns: 1fr; padding: 18px 16px; }
+  .package-grid { grid-template-columns: 1fr; }
+  .package-card { grid-template-columns: 1fr; }
+  .package-card img { height: 180px; }
+  .sight-grid, .package-notes { grid-template-columns: 1fr; }
+  .packages { padding: 48px 16px 24px; }
+  .packages .section-title { display: block; }
+  .packages .gold-btn { margin-top: 12px; }
+  .contact-cta { padding: 56px 18px; }
+  .contact-cta h2 { font-size: 32px; }
+  footer { grid-template-columns: 1fr; text-align: center; padding-bottom: 88px; }
+  .footer-brand, .footer-nav { justify-content: center; }
+  .footer-nav { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+  .gallery-track { animation: none; }
+  .hero-slide img { animation: none !important; transform: none; }
+}
