@@ -29,6 +29,19 @@ function plus(n) {
   d.setDate(d.getDate() + n);
   return d.toISOString().slice(0, 10);
 }
+function addDays(iso, n) {
+  var p = iso.split("-");
+  var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+  d.setDate(d.getDate() + n);
+  var m = String(d.getMonth() + 1).padStart(2, "0");
+  var day = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + m + "-" + day;
+}
+function formatDate(iso) {
+  if (!iso) return "";
+  var p = iso.split("-");
+  return p[2] + "-" + p[1] + "-" + p[0].slice(2);
+}
 var ci = document.getElementById("checkin");
 var co = document.getElementById("checkout");
 if (ci && co) {
@@ -49,8 +62,8 @@ function bookingMessage(room) {
   return [
     "Hello Hotel Nesstara, I would like to check availability.",
     room ? "Room: " + room : "",
-    "Check-in: " + (ci ? ci.value : ""),
-    "Check-out: " + (co ? co.value : ""),
+    "Check-in: " + (ci ? formatDate(ci.value) : ""),
+    "Check-out: " + (co ? formatDate(co.value) : ""),
     "Adults: " + adults,
     "Child below 8: " + children,
     "Rooms: " + rooms
@@ -173,8 +186,8 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
   var text = [
     "Hello Hotel Nesstara, I would like to check availability.",
     "Room: " + currentRoom,
-    "Check-in: " + checkin,
-    "Check-out: " + checkout,
+    "Check-in: " + formatDate(checkin),
+    "Check-out: " + formatDate(checkout),
     "Adults: " + adults,
     "Child below 8: " + children,
     "Rooms: " + rooms
@@ -187,6 +200,7 @@ var PACKAGES = {
   "2n": {
     title: "Darjeeling 2 Nights 3 Days",
     duration: "2 Nights / 3 Days",
+    nights: 2,
     days: [
       {
         title: "Day 1 | NJP / Siliguri / Bagdogra to Darjeeling",
@@ -211,6 +225,7 @@ var PACKAGES = {
   "3n": {
     title: "Darjeeling and Darjeeling Offbeat 3 Nights 4 Days",
     duration: "3 Nights / 4 Days",
+    nights: 3,
     days: [
       {
         title: "Day 1 | NJP / Siliguri / Bagdogra to Sittong",
@@ -245,6 +260,7 @@ var PACKAGES = {
   "4n": {
     title: "Darjeeling & Darjeeling Offbeat 4 Nights 5 Days",
     duration: "4 Nights / 5 Days",
+    nights: 4,
     days: [
       {
         title: "Day 1 | NJP / Siliguri → Sittong",
@@ -286,6 +302,7 @@ var PACKAGES = {
   "5n": {
     title: "Darjeeling Offbeat 5 Nights 6 Days",
     duration: "5 Nights / 6 Days",
+    nights: 5,
     days: [
       {
         title: "Day 1 | NJP / Siliguri → Ramdhura",
@@ -362,7 +379,7 @@ function renderPackage(id) {
       "<button class=\"book\" type=\"button\" id=\"bookPackage\">Book This Package</button>" +
     "</div>";
   document.getElementById("bookPackage").addEventListener("click", function () {
-    openTourForm("package", pkg.title);
+    openTourForm("package", pkg.title, pkg.nights);
   });
 }
 
@@ -370,10 +387,12 @@ var packageModal = document.getElementById("packageModal");
 var tourFormModal = document.getElementById("tourFormModal");
 var currentPackage = "";
 var tourMode = "package";
+var packageNights = 0;
 
-function openTourForm(mode, name) {
+function openTourForm(mode, name, nights) {
   tourMode = mode;
   currentPackage = name || "";
+  packageNights = mode === "package" ? (nights || 2) : 0;
   document.getElementById("tourFormTitle").textContent = mode === "custom" ? "Customized itinerary" : "Book this package";
   document.getElementById("tourFormLabel").textContent = mode === "custom" ? "Tell us the dates and places you have in mind." : currentPackage;
   document.getElementById("tourDestinationsWrap").classList.toggle("show", mode === "custom");
@@ -387,12 +406,19 @@ function openTourForm(mode, name) {
   var start = document.getElementById("tourStart");
   var end = document.getElementById("tourEnd");
   start.value = plus(1);
-  end.value = plus(3);
+  end.value = addDays(start.value, packageNights || 2);
   start.min = plus(0);
   end.min = plus(1);
   packageModal.classList.remove("open");
   tourFormModal.classList.add("open");
 }
+document.getElementById("tourStart").addEventListener("change", function () {
+  var end = document.getElementById("tourEnd");
+  if (packageNights) {
+    end.value = addDays(this.value, packageNights);
+  }
+  end.min = addDays(this.value, 1);
+});
 
 document.querySelectorAll(".view-package").forEach(function (btn) {
   btn.addEventListener("click", function () {
@@ -427,8 +453,8 @@ document.getElementById("tourForm").addEventListener("submit", function (e) {
   var lines = [
     tourMode === "custom" ? "Hello Hotel Nesstara, I would like a customized itinerary." : "Hello Hotel Nesstara, I would like to book a tour package.",
     tourMode === "custom" ? "" : "Package: " + currentPackage,
-    "Start date: " + start,
-    "End date: " + end,
+    "Start date: " + formatDate(start),
+    "End date: " + formatDate(end),
     "Adults: " + adults,
     "Child below 8: " + children,
     "Rooms: " + rooms
